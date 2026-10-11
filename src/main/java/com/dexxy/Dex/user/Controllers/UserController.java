@@ -1,7 +1,8 @@
-package com.dexxy.Dex.user;
+package com.dexxy.Dex.user.Controllers;
 
 import com.dexxy.Dex.common.response.ApiResponse;
 import com.dexxy.Dex.user.DTOs.UserResponse;
+import com.dexxy.Dex.user.Services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +22,7 @@ public class UserController {
         Page <UserResponse> users = userService.getUsers(pageable);
         ApiResponse<Page<UserResponse>> response = ApiResponse.<Page<UserResponse>>builder()
                 .statusCode(HttpStatus.OK)
-                .message("Listof users retrieved successfully")
+                .message("List of users retrieved successfully")
                 .data(users)
                 .build();
 

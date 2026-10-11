@@ -1,5 +1,6 @@
-package com.dexxy.Dex.user;
+package com.dexxy.Dex.user.Entities;
 
+import com.dexxy.Dex.user.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;

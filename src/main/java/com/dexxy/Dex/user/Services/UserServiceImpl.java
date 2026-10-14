@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
             throw new ResourceAlreadyExistsException("Email is already registered");
         }
 
-        UserEntity user = new UserEntity();
+        UserEntity user = modelMapper.map(request, UserEntity.class);
         user.setUsername(username);
         user.setDisplayName(request.getDisplayName().trim());
         user.setEmail(email);
@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService {
 
         UserEntity savedUser = userRepository.save(user);
         log.info("Registered user with id {}", savedUser.getId());
+
         return modelMapper.map(savedUser, UserResponse.class);
     }
 

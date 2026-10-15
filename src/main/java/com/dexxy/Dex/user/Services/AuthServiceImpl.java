@@ -36,9 +36,7 @@ public class AuthServiceImpl implements AuthService {
     public LoginResponse login(LoginRequest request) {
         Authentication authentication;
         try {
-            authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            request.getUsername().trim(), request.getPassword()));
+            authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername().trim(), request.getPassword()));
         } catch (AuthenticationException exception) {
             throw new InvalidCredentialsException();
         }
@@ -58,8 +56,7 @@ public class AuthServiceImpl implements AuthService {
                 .build();
 
         String accessToken = jwtEncoder.encode(
-                JwtEncoderParameters.from(
-                        JwsHeader.with(MacAlgorithm.HS256).build(), claims))
+                JwtEncoderParameters.from(JwsHeader.with(MacAlgorithm.HS256).build(), claims))
                 .getTokenValue();
 
         return new LoginResponse(accessToken, "Bearer", accessTokenTtlSeconds);

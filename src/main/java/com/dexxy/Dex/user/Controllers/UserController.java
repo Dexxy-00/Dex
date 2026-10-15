@@ -44,7 +44,7 @@ public class UserController {
     @GetMapping("/username/{username}")
     public ResponseEntity<ApiResponse<UserResponse>> getUserByUsername(@PathVariable String username) {
         UserResponse user = userService.getUserByUsername(username);
-        ApiResponse<UserResponse>  response = ApiResponse.<UserResponse>builder()
+        ApiResponse<UserResponse> response = ApiResponse.<UserResponse>builder()
                 .statusCode(HttpStatus.OK)
                 .message("User retrieved successfully")
                 .data(user)
